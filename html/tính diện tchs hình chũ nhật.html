@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <title>thông tin liên kết với alert</title>
+</head>
+<body>
+	<div class ="container">
+   <p> thanh</p>
+   <script>
+        let d, r;
+
+        // Vòng lặp do...while: Chạy ít nhất 1 lần, nếu r > d sẽ bắt nhập lại
+        do {
+            d = Number(prompt("Nhập chiều dài:"));
+            r = Number(prompt("Nhập chiều rộng:"));
+
+            if (r > d) {
+                alert("Lỗi: Chiều rộng không thể lớn hơn chiều dài! Vui lòng nhập lại.");
+            }
+        } while (r > d);
+
+        // Sau khi nhập hợp lệ (d > r), tiến hành kiểm tra và tính diện tích
+        if (d === r) {
+            // 1. Nếu d == r: Trường hợp đặc biệt (Hình vuông)
+            alert(`Vì chiều dài bằng chiều rộng (${d}cm), đây là hình vuông.\nDiện tích hình vuông là: ${d * d} cm²`);
+        } else {
+            // 2. Nếu d > r: Tính diện tích hình chữ nhật
+            alert(`Diện tích hình chữ nhật có chiều dài ${d}cm và chiều rộng ${r}cm là: ${d * r} cm²`);
+        }
+    </script>
+    
+</body>  
