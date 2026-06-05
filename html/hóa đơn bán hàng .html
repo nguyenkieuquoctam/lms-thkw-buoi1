@@ -4,107 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hóa đơn bán hàng</title>
-
     <style>
-        body{
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-
-        table{
+        table {
+            width: 80%;
             border-collapse: collapse;
-            width: 800px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
         }
-
-        th, td{
-            border: 2px solid rgb(180, 150, 150);
+        th, td {
+            border: 1px solid #000;
             padding: 10px;
             text-align: center;
-              background:  linear-gradient(to bottom, #ee0404 5%, #ec6205 75%);
+               background:  linear-gradient(to bottom, #ee0404 5%, #ec6205 75%);
         }
-
-        h2{
-            text-align: center;
+        th {
+            background-color: #f2f2f2;
         }
-
-        .tong{
+        .text-left {
+            text-align: left;
+        }
+        .bold {
             font-weight: bold;
-            text-align: center;
         }
     </style>
 </head>
-
 <body>
 
-    <div>
-        <h2>Hóa đơn bán hàng</h2>
+    <h2 style="text-align: center;">Hóa đơn bán hàng</h2>
 
-        <table>
+    <table>
+        <thead>
             <tr>
                 <th>STT</th>
                 <th>Tên hàng</th>
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
-                <th>ĐVT</th>
+                <th>Đvt</th>
                 <th>Thành tiền</th>
             </tr>
-
+        </thead>
+        <tbody>
             <tr>
                 <td>1</td>
-                <td>thùng giấy</td>
-                <td class = "sl">2</td>
-                <td class ="đg">50</td>
+                <td>A</td>
+                <td class="soluong">3</td>
+                <td class="dongia">50</td>
                 <td>Thùng</td>
-                <td class ="tt">?</td>
+                <td class="thanhtien">?</td>
             </tr>
-
             <tr>
                 <td>2</td>
-                <td>chậu bông</td>
-                <td class ="sl">5</td>
-                <td class ="đg">70</td>
+                <td>B</td>
+                <td class="soluong">4</td>
+                <td class="dongia">70</td>
                 <td>Cái</td>
-                <td class ="tt">?</td>
+                <td class="thanhtien">?</td>
             </tr>
-
             <tr>
                 <td>3</td>
-                <td>thùng phi</td>
-                <td class ="sl">7</td>
-                <td class ="đg">100</td>
+                <td>C</td>
+                <td class="soluong">8</td>
+                <td class="dongia">100</td>
                 <td>Thùng</td>
-                <td class ="tt">?</td>
+                <td class="thanhtien">?</td>
             </tr>
-
             <tr>
-                <td colspan="5">Tổng thanh toán</td>
-                 <td colspan2="tong-tien" class="tongthanhtoan">?</td>
+                <td colspan="5" class="text-left bold">Tổng thanh toán</td>
+                <td id="tongthanhtoan" class="bold">?</td>
             </tr>
-        </table>
-    </div>
-    <script>    
-        const sl = document.getElementsByClassName("sl");
-        const đg = document.getElementsByClassName("đg");
-        const tt = document.getElementsByClassName("tt");
+        </tbody>
+    </table>
 
+    <script>
+        // Lấy danh sách các phần tử theo class giống như ghi chú trên bảng
+        let soluong = document.getElementsByClassName("soluong");
+        let dongia = document.getElementsByClassName("dongia");
+        let thanhtien = document.getElementsByClassName("thanhtien");
+        
+        let tong = 0;
 
-        let tongthanhtoan = 0 ;
-        //lập lại qua các dòng 
-        for(let i = 0; i < sl.length; i++)
-        {
-            tt[i].innerHTML= Number(sl[i].innerHTML) * Number(đg[i].innerHTML);
-            //tính tiền theo từng dòng
-           // (tt[i]).innerHTML = Number(sl[i].innerHTML) * Number(đg[i].innerHTML)
-           tt[i].innerHTML = thanhTien.innerHTML;
-            //cộng đòn tiền từng dòng vào tổng thanh toán 
-           // tong = Number(tong)+ number(tt[i].innerHTML);
-           tongthanhtoan += thanhTien.innerHTML;
+        // Duyệt qua từng dòng để tính thành tiền
+        for (let i = 0; i < soluong.length; i++) {
+            // Chuyển dữ liệu text từ HTML thành số để tính toán
+            let soLuong = parseFloat(soluong[i].innerText);
+            let donGia = parseFloat(dongia[i].innerText);
+            
+            // Tính thành tiền từng dòng
+            let thanhTien = soLuong * donGia;
+            
+            // Hiển thị kết quả vào cột Thành tiền
+            thanhtien[i].innerText = thanhTien;
+// Cộng dồn vào tổng thanh toán
+            tong += thanhTien;
         }
-        //gán giá trị mới vào id ="tong thanh toán"
-        document.getElementsByClassName("tongthanhtoan").innerHTML = Number(tongthanhtoan);
 
+        // Hiển thị Tổng thanh toán vào ô có id="tongthanhtoan"
+        document.getElementById("tongthanhtoan").innerText = tong;
     </script>
 
 </body>
