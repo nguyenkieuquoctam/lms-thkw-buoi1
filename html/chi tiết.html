@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chi tiết sản phẩm </title>
+    <script src="../js/data.js "></script>
+    <script src ="../js/data.js"></script>
+</head>
+<body>
+    <div>
+        <img src ="../assets/images/hoa.jpg" alt ="card image" id = "name">
+        <p id ="name "> tên sản phẩm </p>
+        <p id ="price"> giá</p>
+        <p id ="desc"> mô tả </p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const productId = urlParams.get('masp');
+
+        let found = products.find(item=>item.id === productId);
+        if(found)
+        {
+          document.getElementById("name").innerHTML = found.name;
+          document.getElementById("price").innerHTML = found.price;  
+          document.getElementById("desc").innerHTML = found.desciption;  
+          document.getElementById("name").src = found.image;  
+          document.getElementById("name").alt = found.name;    
+        }
+    </script>
+
+</body>
+</html>

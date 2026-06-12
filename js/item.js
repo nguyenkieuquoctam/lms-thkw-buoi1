@@ -6,7 +6,7 @@ const product = {
                     linkProduct: "https://www.dienmayxanh.com/kinh-nghiem-hay/hieu-ro-y-nghia-hoa-hong-giup-ban-chinh-phuc-nang-1321035?srsltid=AfmBOopSAPRVOjbvX7iLQBlWUdL36NSbheHg9xRw4syXPlt4m3qk3Ruk" 
                 }
 
-function createItem{obj}//obj là đối đối tượng quản lý thông tin sản phẩm 
+function createItem(obj)//obj là đối đối tượng quản lý thông tin sản phẩm 
 {
     const item = document.createElement("div");
     item.setAttribute("class","container-item");
@@ -53,3 +53,34 @@ function createItem{obj}//obj là đối đối tượng quản lý thông tin s
     document.getElementById("product-list").appendChild(item);
 
 }              
+
+
+function createItemv2(obj)
+{
+  const list = document.getElementById("product-list");
+  list.innerHTML +=`
+     <div class="col">
+                    <div class="card product-Item">
+                        <div class="product-Image">
+                            <img class="card-img-top" src="${obj.image}" alt="${obj.name}">
+                        </div>
+                        <div class="card-body product-Info">
+                         <h4 class="card-title">${obj.name}/h4>
+                         <h5 class ="card-text">${obj.price}</h5>
+                         <p class ="card-text"> ${obj.description}</p>
+                         <a href ="${obj.linkProduct}" class="card-link"> xem chi tiết</a>
+                        </div>
+                 </div>
+        </div>
+  `;
+}
+ function loadAllproducts(array)
+ {
+    let i = 0;
+    while(i<array.legth)
+    {
+        createItemv2(array[i]);
+        i++;
+    }
+
+ }
