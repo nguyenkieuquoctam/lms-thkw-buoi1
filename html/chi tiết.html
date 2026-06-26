@@ -3,32 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>chi tiết sản phẩm </title>
-    <script src="../js/data.js "></script>
-    <script src ="../js/item.js"></script>
+    <title>chi tiết sản phẩm</title>
+    <script src="../js/data.js"></script>
+    <script src="../js/item.js"></script>
+    <link rel="stylesheet" href="../css/style1.css">
 </head>
 <body>
     <div>
-        <img src ="../assets/images/hoa.jpg" alt ="card image" id = "name">
-        <p id ="name "> tên sản phẩm </p>
-        <p id ="price"> giá</p>
-        <p id ="desc"> mô tả </p>
+        <img src="" id="img-product" alt="">
+        <p id="name">tên sản phẩm</p>
+        <p id="price">giá</p>
+        <p id="desc">mô tả</p>
+       
+        <a href="#" id="link-detail" target="_blank">🔗 Xem chi tiết</a>
+
+        <div class="btn-group">
+        <div class="btn-row">
+        <button id="btn-cart">🛒 Thêm vào giỏ hàng</button>
+        </div>
+     <button id="btn-buy">💳 Mua ngay</button>
     </div>
+
+
+
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-
         const productId = urlParams.get('masp');
 
-        let found = products.find(item=>item.id === productId);
-        if(found)
-        {
-          document.getElementById("name").innerHTML = found.name;
-          document.getElementById("price").innerHTML = found.price;  
-          document.getElementById("desc").innerHTML = found.desciption;  
-          document.getElementById("name").src = found.image;  
-          document.getElementById("name").alt = found.name;    
-        }
-    </script>
+        let found = products.find(item => item.id === productId);
+        if(found) {
+            document.getElementById("img-product").src = found.image;
+            document.getElementById("img-product").alt = found.name;
+            document.getElementById("name").innerHTML = found.name;
+            document.getElementById("price").innerHTML = found.price;
+            document.getElementById("desc").innerHTML = found.description;
 
+             document.getElementById("link-detail").href = found.linkProduct;
+
+        }
+         
+    </script>
 </body>
 </html>
